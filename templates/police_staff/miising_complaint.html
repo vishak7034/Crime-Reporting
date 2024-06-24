@@ -1,0 +1,105 @@
+
+{% extends 'police_staff/police_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+ <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/police1.jpg' %});" data-stellar-background-ratio="0.5">
+
+        <br><br><br><br>
+          <br>
+    <div class="site-section" id="blog-section">
+      <div class="container">
+        <h1 style="color: white">Missing Persons</h1>
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+
+
+          </div>
+        </div>
+
+
+
+            <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="container">
+            <div class="site-blocks-table">
+              <div style="color: white">
+              <table style="background-color: #0b0b0b" class="table table-bordered" align="center">
+                <thead >
+                  <tr>
+
+                    <th class="product-dis">Informer Name</th>
+                     <th class="product-dis">Missing Person Photo</th>
+                      <th class="product-dis">Date</th>
+                     <th class="product-dis">Details</th>
+
+{#                        <th class="product-dis">ADD EVIDENCE</th>#}
+
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for m in cri %}
+
+                 <tr>
+
+
+                    <td class="product-dis">
+                    <a href="ViewUser?id={{ m.user.id }}">
+                        <h2 class="h5 text-white">{{ m.user.login.first_name}}</h2></a>
+                    </td>
+
+                     <td class="product-dis">
+                        <img style="max-width: 200px;max-height:140px;" src="/media/{{ m.image }}">
+                    </td>
+
+
+                    <td class="product-dis">
+                      <h2 class="h5 text-white">{{ m.date}}</h2>
+                    </td>
+
+                    <td class="product-dis">
+                      <h2 class="h5 text-white">{{ m.desc }}</h2>
+                    </td>
+                    
+{#                     <td class="product-dis">#}
+{#                      <a href="fir?id={{ m.id}}" class=" btn btn-success">ADD EVIDENCE</a> </td>#}
+
+
+
+
+
+
+                 </tr>
+
+
+                {% endfor %}
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+</div>
+
+
+            </div>
+
+    </div>
+
+
+
+
+{% endblock %}

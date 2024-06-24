@@ -1,0 +1,95 @@
+{% extends 'officer/officer_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/police1.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div style="width: 1500px">
+<br><br><br><br><br><br><br><br>&nbsp
+    <section class="ftco-counter" id="section-counter">
+        <div class="container-fluid">
+       <style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+
+<h2 ALIGN="center" style="color: white">FIR</h2>
+
+<table id="customers">
+  <tr>
+
+
+      <th>INFORMER NAME</th>
+      <th>REPORTING TIME</th>
+      <th>DESCRIPTION</th>
+      <th>STEP TAKEN</th>
+      <th>CRIMINAL</th>
+      <th>DISPATCH DATE</th>
+
+
+      <th>APPROVE</th>
+      <th>REJECT</th>
+
+
+
+
+
+
+
+
+
+
+  </tr>
+  {% for dri in p  %}
+  <tr>
+
+    <td style="color: black">{{ dri.informer}}</td>
+          <td style="color: black">{{ dri.reporttime}}</td>
+    <td style="color: black">{{ dri.casedescription}}</td>
+    <td style="color: black">{{ dri.explanation}}</td>
+          <td style="color: black">{{ dri.criminal}}</td>
+                <td style="color: black">{{ dri.datetime}}</td>
+
+
+    <td><a href="approve?id={{ dri.id}}" class=" btn btn-success">Approve</a></td>
+    <td><a href="reject?id={{ dri.id}}" class=" btn btn-danger">Reject</a></td>
+
+
+
+
+
+  </tr>
+{% endfor %}
+</table>
+
+    </section>
+        </div>
+</div>
+
+{% endblock %}

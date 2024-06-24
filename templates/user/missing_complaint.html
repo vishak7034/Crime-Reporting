@@ -1,0 +1,66 @@
+{% extends 'user/user_base.html' %}
+{% load static %}
+{% block content %}
+ {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/police1.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <br><br><br><br>
+
+
+
+          <section class="ftco-consultation">
+        <div class="container-fluid">
+            <div class="row d-
+
+            md-flex">
+
+                <div class="half p-3 p-md-5 ftco-animate">
+
+                     <h1  style="color:white" >Missing Complaint</h1>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputPassword1" style="color:white">Select Image</label>
+                    <input type="file" class="form-control" name="image" placeholder="image" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" style="color:white">Missing date</label>
+                    <input type="date" class="form-control" name="date" placeholder="date">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" style="color:white">Description</label>
+                    <textarea type="text" class="form-control" name="desc" placeholder="add description"></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-12">
+                               <select class="form-control" name="station_name" required=""  class="form-control">
+                     <option value="">Select station</option>
+                   {% for s in staff %}
+                    <option value="{{ s.id }}">{{ s.station.station_name }}</option>
+                   {% endfor %}
+
+                    </select>
+                           </div>
+               </div>
+                {% comment %} <input type="hidden" name="id" class="form-control" value="{{miss.id}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{event.eventname}}">
+                <input type="hidden" name="id2" class="form-control" value="{{miss.user_id}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{event.eventname}}">
+                <input type="hidden" name="id3" class="form-control" value="{{miss.station_id}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{event.eventname}}"> {% endcomment %}
+
+               
+                <div class="form-group">
+                  <input type="submit" name="submit" value="sumbit" class="btn btn-primary">
+                </div>
+              </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        </div>
+      </div>
+{% endblock %}
